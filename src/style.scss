@@ -6,6 +6,14 @@
     .container{
         width: 1024px;
 
+
+        .link{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        // login and register
+
         .auth{
             display: flex;
             flex-direction: column;
@@ -63,10 +71,50 @@
         // navbar
         .navbar{
             .container{
+                padding: 10px 0px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
 
 
-                .logo{}
-                .links{}
+                .logo img{
+                    height: 150px;
+                    width: auto;
+                }
+                .links{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    h6{
+                        font-size: 16px;
+                        font-weight: 300;
+                        
+                    }
+
+                    span{
+                        cursor: pointer;
+
+                    }
+                    .write{
+                        background-color: lightblue;
+                        display: flex;
+                        width: 50px;
+                        height: 50px;
+                        align-items: center;
+                        border-radius: 50%;
+                        font-weight: 300; 
+
+
+                        &:hover{
+                            width: 48px;
+                            height: 48px;
+                            background-color: white;
+                            color: teal;
+                            border: 1px solid teal;
+                        }
+                    }
+                }
             }
         }
     }
