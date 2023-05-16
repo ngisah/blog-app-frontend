@@ -214,7 +214,10 @@
             gap: 50px;
 
             .content{
+                display: flex;
                 flex: 5;
+                flex-direction: column;
+                gap: 30px;
 
                 img{
                     width: 100%;
@@ -222,7 +225,7 @@
                     object-fit: cover;
                 }
 
-                .user{
+                .user-info{
                     display: flex;
                     align-items: center;
                     gap: 10px;
@@ -238,9 +241,48 @@
                         font-weight: bold;
                     }
                 }
+                .edit{
+                    display: flex;
+                    gap: 5px;
+
+                    img{
+                        height: 40px;
+                        width: 40px;
+                        cursor: pointer;
+                    }
+                }
+                h1{
+                    font-size: 42px;
+                    color: #333;
+                }
+                p{
+                    text-align: justify;
+                    line-height: 20px;
+                }
+                
 
                 .menu{
                     flex: 2;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+
+                    h1{
+                        font-size: 20px;
+                        color: #555;
+                    }
+                    .post{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+
+                        img{
+                            transform: scale(1.5);
+                            width: 400%;
+                            height: 10px;
+                            object-fit: cover;
+                        }
+                    }
                 }
                 
             }
