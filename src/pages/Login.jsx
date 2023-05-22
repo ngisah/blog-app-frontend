@@ -30,14 +30,15 @@ const Login = () => {
     <div className='auth'>
         <h1>Login</h1>
         <form>
-            <input type='text' placeholder='Username' />
-            <input type='password' placeholder='Password' />
-            <button className='login-btn'>Login</button>
+            <input type='text' placeholder='Username' name='username' onChange={handleChange} />
+            <input type='password' placeholder='Password' name='password' onChange={handleChange} />
+            <button className='login-btn' onSubmit={handleSubmit}>Login</button>
     
             <span>Don't you have an account?<Link to ='/register'>Register</Link></span>
         </form>
     </div>
   )
+}
 }
 
 export default Login
