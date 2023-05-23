@@ -26,6 +26,15 @@ const Single = () => {
     fetchData();
   }, [postId]);
 
+  const handleDelete = async ()=>{
+    try {
+      await axios.delete(`/posts/${postId}`);
+      navigate("/")
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
 
   
