@@ -1,9 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import Delete from '../img/delete.png'
-import {Link} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
 import Menu from '../components/Menu'
+import { useState } from 'react'
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
 
 const Single = () => {
+  const [post, setPost] = useState({});
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const postId = location.pathname.split("/")[2];
+  const { currentUser } = useContext(AuthContext);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/posts/${postId}`);
+        setPost(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [postId]);
+
+
+
   
   return (
     <div className='single'>
