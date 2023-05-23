@@ -52,17 +52,17 @@ const Single = () => {
             alt=""
           />}
         <div className="info">
-          <span>Kifee</span>
-          <p>Posted 4 days ago</p>
+          <span>{post.username}</span>
+          <p>Posted {moment(post.date).fromNow()}</p>
         </div>
-        <div className="edit">
-          <Link to={`/write?/edit=1`}>
-          <img src='https://raw.githubusercontent.com/safak/youtube2022/blog-app/client/src/img/edit.png' alt='delete button' />
-          
-          </Link>
-          <img onClick={handleDelete} src={Delete} alt='delete'/>
-          
-        </div>
+        {currentUser.username === post.username && (
+            <div className="edit">
+              <Link to={`/write?edit=2`} state={post}>
+                <img src={Edit} alt="" />
+              </Link>
+              <img onClick={handleDelete} src={Delete} alt="" />
+            </div>
+          )}
         
         
         
