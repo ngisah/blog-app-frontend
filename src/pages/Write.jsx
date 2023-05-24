@@ -7,11 +7,23 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Write = () => {
   const state = useLocation().state
-  const [value, setValue] = useState('');
-  const [ title, setTitle] = useState('');
+  const [value, setValue] = useState(state?.title || "");
+  const [ title, setTitle] = useState(state?.desc || "");
   const [ file, setfile] = useState(null);
+  cosnt [cat, setCat] = useState(state?.cat || "")
 
   const navigate = useNavigate()
+
+  const upload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await axios.post("/upload", formData);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleClick = async (e) => {
 
