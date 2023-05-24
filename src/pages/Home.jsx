@@ -21,6 +21,11 @@ const Home = () => {
   [cat]
 
   )
+
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
 //   const posts = [
 //     {
 //       "id": "1",
@@ -54,6 +59,8 @@ const Home = () => {
 // },
 
 //   ];
+
+
   return (
     <div className='home'>
       <div className='posts'>
