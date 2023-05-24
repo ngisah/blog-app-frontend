@@ -2,16 +2,34 @@ import React from 'react'
 import { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Write = () => {
+  const state = useLocation().state
   const [value, setValue] = useState('');
+  const [ title, setTitle] = useState('');
+  const [ file, setfile] = useState(null);
+
+  const navigate = useNavigate()
+
+  const handleClick = async (e) => {
+
+  }
   console.log(value);
   return (
     <div className='add'>
       <div className='content'>
-        <input type='text' placeholder='title'/>
+        <input 
+          type='text' 
+          placeholder='title' />
+          onChange = {(e)=>setTitle(e.target.value)}
         <div className="editorContainer">
-        <ReactQuill classname='editor' theme="snow" value={value} onChange={setValue} />
+        <ReactQuill 
+          classname='editor' 
+          theme="snow" 
+          value={value} 
+          onChange={setValue} />
         </div>
       </div>
       <div className='menu'>
@@ -27,7 +45,7 @@ const Write = () => {
           <label className='file' htmlFor='file'>Upload image</label>
           <div className="buttons">
             <button>Save as draft</button>
-            <button>Update</button>
+            <button onClick={handleClick}>Publish</button>
           </div>
         </div>
         <div className="item">
