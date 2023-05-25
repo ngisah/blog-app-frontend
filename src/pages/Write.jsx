@@ -85,7 +85,14 @@ const Write = () => {
         <div className="item">
           <h1>Category</h1>
           <div className='cat'>
-          <input type="radio" name='cat' value='art' id='art'/>
+          <input 
+            type="radio" 
+            checked={cat === "technology"}
+            name='cat' 
+            value='art' 
+            id='art'
+            onChange={(e) => setCat(e.target.value)}
+          />
           <label htmlFor='art'>Art</label>
           </div>
           <div className='cat'>
