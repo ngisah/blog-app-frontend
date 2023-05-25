@@ -129,11 +129,26 @@ const Write = () => {
           <label htmlFor='film'>Film</label>
           </div>
           <div className='cat'>
-          <input type="radio" name='cat' value='fashion' id='fashion'/>
+          <input 
+          type="radio" 
+          checked={cat === "fashion"}
+          name='cat' 
+          value='fashion' 
+          onChange={(e) => setCat(e.target.value)}
+          id='fashion'
+          />
           <label htmlFor='fashion'>Fashion</label>
           </div>
           <div className='cat'>
-          <input type="radio" name='cat' value='food' id='food'/>
+          <input 
+          type="radio"
+          checked={cat === "food"} 
+          name='cat' 
+          value='food' 
+
+          id='food'
+          onChange={(e) => setCat(e.target.value)}
+          />
           <label htmlFor='food'>Food</label>
          </div> 
         </div>
