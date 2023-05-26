@@ -1,39 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Menu = () => {
-    const posts = [
-        {
-          "id": "1",
-          "title": "lorem Ipsum",
-          "desc": "This is sample data #1",
-          "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
-      },
-      {
-        "id": "2",
-        "title": "lorem Ipsum",
-        "desc": "This is sample data #1",
-        "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
-    },
-    {
-      "id": "3",
-      "title": "lorem Ipsum",
-      "desc": "This is sample data #1",
-      "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
-    },
-    {
-      "id": "4",
-      "title": "lorem Ipsum",
-      "desc": "This is sample data #1",
-      "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
-    },
-    {
-      "id": "5",
-      "title": "lorem Ipsum",
-      "desc": "This is sample data #1",
-      "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
-    },
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/posts/?cat=${cat}`);
+        setPosts(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [cat]);
+    // const posts = [
+    //     {
+    //       "id": "1",
+    //       "title": "lorem Ipsum",
+    //       "desc": "This is sample data #1",
+    //       "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
+    //   },
+    //   {
+    //     "id": "2",
+    //     "title": "lorem Ipsum",
+    //     "desc": "This is sample data #1",
+    //     "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
+    // },
+    // {
+    //   "id": "3",
+    //   "title": "lorem Ipsum",
+    //   "desc": "This is sample data #1",
+    //   "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
+    // },
+    // {
+    //   "id": "4",
+    //   "title": "lorem Ipsum",
+    //   "desc": "This is sample data #1",
+    //   "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
+    // },
+    // {
+    //   "id": "5",
+    //   "title": "lorem Ipsum",
+    //   "desc": "This is sample data #1",
+    //   "img": "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
+    // },
     
-      ];
+    //   ];
   return (
     <div className='menu'>
         <h1>
@@ -41,7 +54,7 @@ const Menu = () => {
         </h1>
         {posts.map(post=>(
             <div className='post' key={post.id}>
-                <img src={post.img} alt=''/>
+                <img src={`../upload/${post?.img}`}  alt=''/>
                 <h2>{post.title}</h2>
                 <button>read more</button>
             </div>
